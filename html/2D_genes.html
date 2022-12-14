@@ -1,0 +1,41 @@
+{{template "base" .}}
+{{define "content"}}
+<h1>{{.Title}}</h1>
+<h2>Manually enter ID's</h2>
+<form action="/2D" method="POST">
+    <div>
+        <label for="genes1">Spot 1:</label>
+        <input type="text" name="genes1" placeholder="ENST00000569631,ENST00000569631" size="100">
+    </div>
+    <div>
+        <label for="genes2">Spot 2:</label>
+        <input type="text" name="genes2" placeholder="ENST00000569631,ENST00000569631,ENST00000569631" size="100">
+    </div>
+    <div>
+        <label for="sgrna"># sgrna's:</label>
+        <input type="text" name="sgrna" placeholder="3">
+    </div>
+    <div>
+        <input type="checkbox" name="manual" value="true" unchecked>
+        <label for="manual">Manual library assembly?</label>
+    </div>
+    <input type="submit" value="Submit">
+</form>
+<hr />
+<h2>Upload file with ID's</h2>
+<form action="/2D_form" method="POST" enctype="multipart/form-data">
+    <div>
+        <label for="sgrna"># sgrna's:</label>
+        <input type="text" name="sgrna" placeholder="3">
+    </div>
+    <div>
+        <label for="file">File with genes:</label>
+        <input type="file" name="file">
+    </div>
+    <div>
+        <input type="checkbox" name="manual" value="true" unchecked>
+        <label for="manual">Manual library assembly?</label>
+    </div>
+    <input type="submit" value="Submit">
+</form>
+{{end}}

@@ -1,0 +1,7 @@
+{{template "base" .}}
+{{define "content"}}
+    <body>
+    <h1>Encountered the following error:</h1>
+    {{range .Messages}} {{.}} {{end}}
+    </body>
+{{end}}

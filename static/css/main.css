@@ -1,0 +1,81 @@
+/*general setup for navbar*/
+.nav-ul{
+    height: 80px;
+    width: 100%;
+    line-height: 50px;
+    background-color: #269bd5;
+    display: inline;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+}
+
+.nav-ul h1 {
+    display: flex;
+    align-items: center;
+}
+
+/*ul in navbar*/
+.nav-ul ul{
+    list-style: none;
+    padding: 10;
+    margin: 10;
+}
+
+/*li in navbar*/
+.nav-ul ul li{
+    float: left;
+    display: inline;
+    margin: 20px;
+}
+
+/*a elements in li in navbar*/
+a {
+    color: black;
+    display: inline;
+    text-align: center;
+}
+
+
+.sec-standards{
+    text-align: left;
+    width: 100%;
+	height: 80%;
+	background: white;
+}
+
+.sec-partners{
+    text-align: left;
+    width: 100%;
+	height: 10%;
+}
+
+body {
+    margin-top: 80px;
+    padding: 30px;
+}
+div.partner-logos{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+div.row{
+    display: flex;
+    flex-flow: row;
+}
+
+div.logo-container1{
+    width: 33%;
+}
+
+div.logo-container1{
+    width: 100%;
+}
+
+div.h1-partners{
+    color: black;
+}

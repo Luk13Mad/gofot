@@ -1,0 +1,44 @@
+{{template "base" .}}
+{{define "content"}}
+        <body>
+        <h1>{{.Title}}</h1>
+        <br>
+        <div>
+            <h2>Is there a publication with more details?</h2>
+            <br>
+            <p>
+                Yes, there is. You can find it here : <a href="nature.com">PLACEHOLDER<a/>
+            </p>
+        </div>
+        <div>
+            <h2>Are there examples for input data?</h2>
+            <br>
+            <p>
+                Yes, you can find examples for both 2D and 3D setups at the startpage. <br>
+                <a href="/">Link<a/>
+            </p>
+        </div>
+        <div>
+            <h2>Which guides are used with this tool?</h2>
+            <br>
+            <p>
+                The guides used in this tool stem from a publication by Wessels et al. :<br>
+                <a href="https://doi.org/10.1038/s41587-020-0456-9">Massively parallel Cas13 screens reveal principles for guide RNA design</a>
+            </p>
+        </div>
+        <div>
+            <h2>Are multiple guides targeting the same gene ordered in some fashion?</h2>
+            <br>
+            <p>
+                The guides are ranked and used by decreasing predicted efficacy.
+            </p>
+        </div>
+        <div>
+            <h2>Are other identifiers next to ENSTID allowed?</h2>
+            <br>
+            <p>
+                No, only ENSTID will work. Take care that you don't enter the version number at the end of the IDs.
+            </p>
+        </div>
+        </body>
+{{end}}

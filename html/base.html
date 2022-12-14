@@ -1,0 +1,55 @@
+{{define "base"}}
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1" >
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <link rel="stylesheet" type="text/css" href="static/css/main.css" />
+      <title>Friendly Oligo Tool</title>
+    </head>
+    <body>
+      <header>
+        <nav class="nav-ul">
+          <h1 class="h1-header">goFOT</h1>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/2D">2D</a></li>
+            <li><a href="/3D">3D</a></li>
+            <li><a href="/faq">FAQ</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <section class="sec-standards">
+          <hr />
+          {{block "content" .}} {{end}}
+        </section>
+        <section class="sec-partners">
+        <hr />
+          <h1 class="h1-partners">Our Partners</h1>
+            <div class="partner-logos">
+              <div class = row >
+                <div class="logo-container1">
+                  <img src="static/img/Logo-Kitz.svg" alt="KITZ logo" width = "300px" height="200" />
+                </div>
+                <div class="logo-container1">
+                  <img src="static/img/uni-heidelberg-logo.svg" alt="Heidelberg logo" width = "300px" height="200" />
+                </div>
+                <div class="logo-container1">
+                  <img src="static/img/LMU_Muenchen_Logo.svg" alt="LMU logo" width = "300px" height="200" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="logo-container2">
+                  <img src="static/img/Deutsches_Krebsforschungszentrum_Logo.svg" alt="DKFZ logo" width = "900px" height="200px"/>
+                </div>
+              </div>
+            </div>
+        </section>
+      </main>
+    </body>
+</html>
+{{end}}
