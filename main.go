@@ -11,21 +11,27 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 )
 
 var Templates = loadTemplates()
 var db *sql.DB
-
-const (
-	DATABASE   = "postgres://postgres:password@localhost:1234/postgres?sslmode=disable"
-	listenAddr = ":8889"
-)
+var DATABASE string //= "postgres://POSTGRES_USR:POSTGRES_PWD@localhost:1234/POSTGRES_DB?sslmode=disable"
 
 func main() {
 	logger := log.New(os.Stdout, "http: ", log.LstdFlags)
 
 	logger.Println("Server is starting...")
+
+	err := godotenv.Load()
+	if err != nil {
+		logger.Fatal("Error loading .env file")
+	}
+
+	PORT := os.Getenv("PORT")
+	postgres_usr, postgres_pwd, postgres_db := os.Getenv("POSTGRES_USR"), os.Getenv("POSTGRES_PWD"), os.Getenv("POSTGRES_DB")
+	DATABASE = "postgres://" + postgres_usr + ":" + postgres_pwd + "@localhost:1234/" + postgres_db + "?sslmode=disable"
 
 	mux := http.NewServeMux()
 
@@ -65,7 +71,7 @@ func main() {
 	mux.Handle("/static/", http.StripPrefix("/static/", fs))
 
 	server := &http.Server{
-		Addr:         listenAddr,
+		Addr:         ":" + PORT,
 		Handler:      (util.Middlewares{mhw.Logging, mhw.Tracing}).Apply(mux), //successively apply all middlewares staring from the left
 		ErrorLog:     logger,
 		ReadTimeout:  5 * time.Second,
@@ -74,7 +80,7 @@ func main() {
 	}
 
 	if err := server.ListenAndServe(); err != http.ErrServerClosed {
-		logger.Fatalf("Could not listen on %q: %s\n", listenAddr, err)
+		logger.Fatalf("Could not listen on %q: %s\n", PORT, err)
 	}
 }
 
