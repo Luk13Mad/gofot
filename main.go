@@ -20,7 +20,7 @@ var db *sql.DB
 var DATABASE string //= "postgres://POSTGRES_USR:POSTGRES_PWD@localhost:1234/POSTGRES_DB?sslmode=disable"
 
 func main() {
-	logger := log.New(os.Stdout, "http: ", log.LstdFlags)
+	logger := log.New(os.Stdout, "", log.LstdFlags)
 
 	logger.Println("Server is starting...")
 
