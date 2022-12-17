@@ -30,8 +30,8 @@ func main() {
 	}
 
 	PORT := os.Getenv("PORT")
-	postgres_usr, postgres_pwd, postgres_db := os.Getenv("POSTGRES_USR"), os.Getenv("POSTGRES_PWD"), os.Getenv("POSTGRES_DB")
-	DATABASE = "postgres://" + postgres_usr + ":" + postgres_pwd + "@localhost:1234/" + postgres_db + "?sslmode=disable"
+	postgres_usr, postgres_pwd, postgres_db, postgres_port := os.Getenv("POSTGRES_USR"), os.Getenv("POSTGRES_PWD"), os.Getenv("POSTGRES_DB"), os.Getenv("POSTGRES_PORT")
+	DATABASE = "postgres://" + postgres_usr + ":" + postgres_pwd + "@localhost:" + postgres_port + "/" + postgres_db + "?sslmode=disable"
 
 	mux := http.NewServeMux()
 
@@ -43,9 +43,21 @@ func main() {
 	}
 	logger.Println("Connected to DB...")
 
-	db.SetMaxOpenConns(25) //set DB connection parameters
-	db.SetMaxIdleConns(25)
-	db.SetConnMaxLifetime(10 * time.Minute)
+	max_open_conns, err := strconv.Atoi(os.Getenv("MAXOPENCONNS"))
+	if err != nil {
+		logger.Fatal(err)
+	}
+	max_idle_conns, err := strconv.Atoi(os.Getenv("MAXIDLECONNS"))
+	if err != nil {
+		logger.Fatal(err)
+	}
+	max_conn_lifetime, err := strconv.Atoi(os.Getenv("MAXCONNLIFETIME"))
+	if err != nil {
+		logger.Fatal(err)
+	}
+	db.SetMaxOpenConns(max_open_conns) //set DB connection parameters
+	db.SetMaxIdleConns(max_idle_conns)
+	db.SetConnMaxLifetime(time.Duration(max_conn_lifetime) * time.Minute)
 
 	if err = db.Ping(); err != nil { //ping DB and fail on error
 		logger.Fatal(err)
