@@ -33,8 +33,8 @@ func (hw *HandleWrapper) Process2DForm(w http.ResponseWriter, r *http.Request) {
 	}
 
 	for _, r := range records {
-		if len(r) > 2 { // if more than two records per line
-			ctx := ErrorMessages{Messages: []string{"Error while processing uploaded file:", "Too many entries per row, check uploaded file."}}
+		if len(r) != 2 { // if more than two records per line
+			ctx := ErrorMessages{Messages: []string{"Error while processing uploaded file:", "Wrong number of entries in at least one row, check uploaded file."}}
 			w.WriteHeader(http.StatusInternalServerError)
 			hw.templates["error_message.html"].Execute(w, ctx)
 			requestID := w.Header().Get("X-Request-Id")
@@ -93,8 +93,8 @@ func (hw *HandleWrapper) Process3DForm(w http.ResponseWriter, r *http.Request) {
 	}
 
 	for _, r := range records {
-		if len(r) > 3 { // if more than 3 records per line
-			ctx := ErrorMessages{Messages: []string{"Error while processing uploaded file:", "Too many entries per row, check uploaded file."}}
+		if len(r) != 3 { // if unequal 3 records per line
+			ctx := ErrorMessages{Messages: []string{"Error while processing uploaded file:", "Wrong number of entries in at least one row, check uploaded file."}}
 			w.WriteHeader(http.StatusInternalServerError)
 			hw.templates["error_message.html"].Execute(w, ctx)
 			requestID := w.Header().Get("X-Request-Id")

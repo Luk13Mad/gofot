@@ -146,7 +146,7 @@ func ConcatGuidesForManual(guidecombi [2]models.Guide) LineManual {
 	OutputLine.Seq1 = G1.Sequence
 	OutputLine.Seq2 = G2.Sequence
 	OutputLine.Concat = util.DR30 + G1.Sequence + util.DR36 + G2.Sequence + util.U6T
-	OutputLine.ConcatComplement = util.ReverseComp(OutputLine.Concat)
+	OutputLine.ConcatComplement = util.Complement(OutputLine.Concat)
 	OutputLine.F1 = OutputLine.Concat[26:75]
 	OutputLine.R1 = util.Reverse(OutputLine.ConcatComplement[30:79])
 	OutputLine.F2 = OutputLine.Concat[75 : len(OutputLine.Concat)-5]

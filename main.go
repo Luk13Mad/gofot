@@ -35,7 +35,7 @@ func main() {
 
 	mux := http.NewServeMux()
 
-	fs := http.FileServer(http.Dir("static/")) //fileserver for static files
+	fs := http.FileServer(http.Dir("./static/")) //fileserver for static files
 
 	db, err := sql.Open("postgres", DATABASE) //open connection to DB and fail on error
 	if err != nil {

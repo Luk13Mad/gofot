@@ -2,7 +2,33 @@
 {{define "content"}}
         <body>
         <h1>{{.Title}}</h1>
-        This is an awesome tool!
-        Please cite : ------
+        <div>
+                <h2>On 2D CRISPR screens.</h2>
+                <p>
+                        With a 2D CRISPR screen you can target 2 genes simultaneously with one plasmid.
+                        To specify the targets for your screen you have two options.
+                        Either you manually enter the ensembl transcript IDs (ENSTIDs) of all the genes you wish to investigate or you upload a file with all ENSTIDs.
+                        If you manually enter the ENSTID just write them, separated by comma in the correct field.
+                        Take care that you do not enter the version number of the ENSTID.
+                        ENST00000000412<strong>.3</strong> would be wrong, ENST00000000412 would be the correct way.
+                </p>
+                <p>
+                        An example input file for a 2D screen can be found <strong><a href="/download_2D_example">here</a></strong>.
+                        Each spot is represented by a column, so in this case there must be exactly two columns per line.
+                        Take care that the columns are separated by comma and that there is <strong>no</strong> header line.
+                        If you plan an asymmetric screen, not the same amount of genes targeted in each spot, leave an empty spot in the respective column.
+                        However you must still enter the comma so that it is clear how many columns there are. The provided example has an asymmetrical design.
+                </p>
+                <p>
+                        Additionally you must enter the amount of guides each gene/transcript should be targeted by.
+                        The minimum is 1 and the maximum is 10. Currently it is not possible to have different amount of guides per gene.
+                        Finally you must tick the box if you wish to have a "ready-to-order" library set or if you want to do manually assembly.
+                </p>
+        </div>
+        <br>
+        <br>
+        <div>
+                <p>For example input file 3D klick <a href="/download_3D_example">here</a></p>
+        </div>
         </body>
 {{end}}

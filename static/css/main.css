@@ -40,14 +40,15 @@ a {
 }
 
 
-.sec-standards{
-    text-align: left;
+.sec-standards {
     width: 100%;
 	height: 80%;
 	background: white;
+    margin: auto;
+    text-align: justify;
 }
 
-.sec-partners{
+.sec-partners {
     text-align: left;
     width: 100%;
 	height: 10%;
@@ -57,25 +58,38 @@ body {
     margin-top: 80px;
     padding: 30px;
 }
-div.partner-logos{
+.partner-logos {
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
     }
 
-div.row{
+.row {
     display: flex;
     flex-flow: row;
 }
 
-div.logo-container1{
+.logo-container1 {
     width: 33%;
 }
 
-div.logo-container1{
-    width: 100%;
+
+.h1-partners {
+    color: black;
 }
 
-div.h1-partners{
+.faq {
+    text-align: left;
+    margin: auto;
     color: black;
+}
+
+.faqheader {
+    text-align: left;
+    color: black;
+}
+
+.faqtext {
+    color: black;
+    text-align: left;
 }

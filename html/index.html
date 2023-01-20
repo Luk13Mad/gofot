@@ -3,12 +3,16 @@
         <body>
         <h1>{{.Title}}</h1>
         <div>
-              Hello, {{.Name}}!
-        </div>
-        <br>
-        <div>
-                <p>For example input file 2D klick <a href="/download_2D_example">here</a></p>
-                <p>For example input file 3D klick <a href="/download_3D_example">here</a></p>
+              <p>Hello, {{.Name}}!</br></p>
+              <div>
+                <ul>
+                        <li>If you wish to generate a 2D CRISPR screen go <strong><a href="/2D">here</a></strong>.</li>
+                        <li>If you wish to generate a 3D CRISPR screen go <strong><a href="/3D">here</a></strong>.</li>
+                        <li>For a more detailed explanation of this tool and how to use it go <strong><a href="/about">here</a></strong>.</li>
+                        <li>You have questions? Check the FAQ <strong><a href="/faq">here</a></strong>.</li>
+                        <li>If you wish to contact us please go <strong><a href="/contact">here</a></strong>.</li>
+                </ul>
+              </div>
         </div>
         </body>
 {{end}}
