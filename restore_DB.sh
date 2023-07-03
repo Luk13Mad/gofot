@@ -1,1 +1,1 @@
-psql -d postgres -f dump.sql
+gzip -d -k -c dump.sql.gz | psql -d postgres
