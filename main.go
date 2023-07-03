@@ -11,7 +11,6 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 )
 
@@ -24,14 +23,9 @@ func main() {
 
 	logger.Println("Server is starting...")
 
-	err := godotenv.Load()
-	if err != nil {
-		logger.Fatal("Error loading .env file")
-	}
-
 	PORT := os.Getenv("PORT")
-	postgres_usr, postgres_pwd, postgres_db, postgres_port := os.Getenv("POSTGRES_USR"), os.Getenv("POSTGRES_PWD"), os.Getenv("POSTGRES_DB"), os.Getenv("POSTGRES_PORT")
-	DATABASE = "postgres://" + postgres_usr + ":" + postgres_pwd + "@localhost:" + postgres_port + "/" + postgres_db + "?sslmode=disable"
+	postgres_usr, postgres_pwd, postgres_db, postgres_port := os.Getenv("POSTGRES_USER"), os.Getenv("POSTGRES_PASSWORD"), os.Getenv("POSTGRES_DB"), os.Getenv("POSTGRES_PORT")
+	DATABASE = "postgres://" + postgres_usr + ":" + postgres_pwd + "@db:" + postgres_port + "/" + postgres_db + "?sslmode=disable"
 
 	mux := http.NewServeMux()
 
